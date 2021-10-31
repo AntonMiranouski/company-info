@@ -18,7 +18,7 @@ public class Country {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "country")
     private List<Company> companies;
 
     @Override

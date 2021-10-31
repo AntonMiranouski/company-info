@@ -18,7 +18,7 @@ public class Sphere {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "spheres")
     private List<Company> companies;
 
     @Override

@@ -2,9 +2,10 @@ package anton.miranouski.company_info.service;
 
 import anton.miranouski.company_info.model.Country;
 import anton.miranouski.company_info.repository.CountryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CountryService {
@@ -17,8 +18,8 @@ public class CountryService {
         this.countryRepository = countryRepository;
     }
 
-    public List<Country> findAll() {
-        return countryRepository.findAll();
+    public Page<Country> findAll(Integer page) {
+        return countryRepository.findAll(PageRequest.of(page, 10, Sort.Direction.ASC, "id"));
     }
 
     public Country findById(Long id) {
@@ -26,6 +27,7 @@ public class CountryService {
     }
 
     public void save(Country country) {
+        country.setId(null);
         countryRepository.saveAndFlush(country);
     }
 

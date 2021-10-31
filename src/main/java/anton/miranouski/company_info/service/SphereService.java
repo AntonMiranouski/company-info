@@ -2,14 +2,15 @@ package anton.miranouski.company_info.service;
 
 import anton.miranouski.company_info.model.Sphere;
 import anton.miranouski.company_info.repository.SphereRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class SphereService {
 
-    private static final String ERROR_MESSAGE = "No Country with this id was found";
+    private static final String ERROR_MESSAGE = "No Sphere with this id was found";
 
     private final SphereRepository sphereRepository;
 
@@ -17,8 +18,8 @@ public class SphereService {
         this.sphereRepository = sphereRepository;
     }
 
-    public List<Sphere> findAll() {
-        return sphereRepository.findAll();
+    public Page<Sphere> findAll(Integer page) {
+        return sphereRepository.findAll(PageRequest.of(page, 10, Sort.Direction.ASC, "id"));
     }
 
     public Sphere findById(Long id) {
@@ -26,6 +27,7 @@ public class SphereService {
     }
 
     public void save(Sphere sphere) {
+        sphere.setId(null);
         sphereRepository.saveAndFlush(sphere);
     }
 

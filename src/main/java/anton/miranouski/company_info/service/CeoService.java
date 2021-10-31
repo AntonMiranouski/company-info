@@ -2,9 +2,10 @@ package anton.miranouski.company_info.service;
 
 import anton.miranouski.company_info.model.Ceo;
 import anton.miranouski.company_info.repository.CeoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CeoService {
@@ -17,8 +18,8 @@ public class CeoService {
         this.ceoRepository = repository;
     }
 
-    public List<Ceo> findAll() {
-        return ceoRepository.findAll();
+    public Page<Ceo> findAll(Integer page) {
+        return ceoRepository.findAll(PageRequest.of(page, 10, Sort.Direction.ASC, "id"));
     }
 
     public Ceo findById(Long id) {

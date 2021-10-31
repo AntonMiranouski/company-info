@@ -1,8 +1,5 @@
 package anton.miranouski.company_info.dto.request;
 
-import anton.miranouski.company_info.model.Ceo;
-import anton.miranouski.company_info.model.Country;
-import anton.miranouski.company_info.model.Sphere;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +15,9 @@ public class CompanyRequest {
     @NotBlank
     private String name;
 
-    private Ceo ceo;
+    private CeoRequest ceo;
 
-    private Country country;
+    private CountryRequest country;
 
-    private List<Sphere> spheres;
+    private List<SphereRequest> spheres;
 }

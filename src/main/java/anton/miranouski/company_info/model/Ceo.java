@@ -17,7 +17,7 @@ public class Ceo {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(mappedBy = "ceo")
     private Company company;
 
     @Override
