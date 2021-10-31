@@ -28,7 +28,7 @@ public class CompanyService {
     }
 
     /**
-     * Save with checking if the ceo is provided he shouldn't have the company
+     * Save with checking if the ceo is provided he shouldn't have company
      *
      * @param company the company
      */

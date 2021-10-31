@@ -33,7 +33,7 @@ public class CompanyController {
      * @param page the page number
      */
     @GetMapping
-    public ResponseEntity<List<CompanyResponse>> getAll(@RequestParam Integer page) {
+    public ResponseEntity<List<CompanyResponse>> getAll(@RequestParam(defaultValue = "0") Integer page) {
         final Page<Company> companies = companyService.findAll(page);
         final List<CompanyResponse> companyResponseList = companies.stream()
                 .map(company -> mapper.map(company, CompanyResponse.class))

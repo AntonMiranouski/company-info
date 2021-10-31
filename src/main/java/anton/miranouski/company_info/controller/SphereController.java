@@ -33,7 +33,7 @@ public class SphereController {
      * @param page the page number
      */
     @GetMapping
-    public ResponseEntity<List<SphereResponse>> getAll(@RequestParam Integer page) {
+    public ResponseEntity<List<SphereResponse>> getAll(@RequestParam(defaultValue = "0") Integer page) {
         final Page<Sphere> spheres = sphereService.findAll(page);
         final List<SphereResponse> sphereResponseList = spheres.stream()
                 .map(sphere -> mapper.map(sphere, SphereResponse.class))

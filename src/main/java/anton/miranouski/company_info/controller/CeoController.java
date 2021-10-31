@@ -33,7 +33,7 @@ public class CeoController {
      * @param page the page number
      */
     @GetMapping
-    public ResponseEntity<List<CeoResponse>> getAll(@RequestParam Integer page) {
+    public ResponseEntity<List<CeoResponse>> getAll(@RequestParam(defaultValue = "0") Integer page) {
         final Page<Ceo> ceos = ceoService.findAll(page);
         final List<CeoResponse> ceoResponseList = ceos.stream()
                 .map(ceo -> mapper.map(ceo, CeoResponse.class))

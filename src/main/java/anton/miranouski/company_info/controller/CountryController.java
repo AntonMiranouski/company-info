@@ -33,7 +33,7 @@ public class CountryController {
      * @param page the page number
      */
     @GetMapping
-    public ResponseEntity<List<CountryResponse>> getAll(@RequestParam Integer page) {
+    public ResponseEntity<List<CountryResponse>> getAll(@RequestParam(defaultValue = "0") Integer page) {
         final Page<Country> countries = countryService.findAll(page);
         final List<CountryResponse> countryResponseList = countries.stream()
                 .map(country -> mapper.map(country, CountryResponse.class))
